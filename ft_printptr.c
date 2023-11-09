@@ -1,50 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printstr.c                                      :+:      :+:    :+:   */
+/*   ft_printptr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: estegana <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/06 12:00:12 by estegana          #+#    #+#             */
-/*   Updated: 2023/10/06 12:00:22 by estegana         ###   ########.fr       */
+/*   Created: 2023/10/17 13:16:24 by estegana          #+#    #+#             */
+/*   Updated: 2023/10/17 13:16:27 by estegana         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <unistd.h>
 
-int ft_strlen(char *str)
+int ft_printptr(unsigned long p)
 {
+    char    *base;
+    char    res[20];
+    int len;
     int i;
 
     i = 0;
-    while (str[i])
+    len = 0;
+    base = "0123456789abcdef";
+    if (p == 0)
+        return (ft_putstr("(nil)"));
+    write(1, "0x", 2);
+    len += 2;
+    while (p)
     {
-        i++;
+        res[i++] = base[p % 16];
+        p /= 16;
     }
-    return i;
-}
-
-int ft_putchar(char c)
-{
-    write(1, &c, 1);
-    return (1);
-}
-
-int ft_putstr(char *str)
-{
-    int i;
-
-    i= 0;
-    if (!str)
-    {
-        write(1, "(null)", 6);
-        return (6);
-    }
-    while (str[i])
-    {
-        write(1, &str[i], 1);
-        i++;
-    }
-    return (i);
+    while (i--)
+        len += ft_putchar(res[i]);
+    return (len);
 }

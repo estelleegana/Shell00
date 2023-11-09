@@ -15,11 +15,9 @@
 
 int valid(char c)
 {
-    char    c;
-
-    if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c = 'i' || c == 'u' || c == 'x' || c == 'X' || c == '%')
+    if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || c == 'u' || c == 'x' || c == 'X' || c == '%')
         return 1;
-    return 0
+    return 0;
 }
 
 int type(va_list args, char c)
@@ -32,13 +30,13 @@ int type(va_list args, char c)
     if (c == 's')
         len = ft_putstr(va_arg(args, char *));
     if (c == 'p')
-        len = ft_putptr(va_arg(args, unsigned long));
+        len = ft_printptr(va_arg(args, unsigned long));
     if (c == 'd' || c == 'i')
         len = ft_putnbr(va_arg(args, int));
     if (c == 'u')
-        len = ft_putunsigned(va_arg(args, unsigned int));
+        len = ft_putuns(va_arg(args, unsigned int));
     if (c == 'x' || c == 'X')
-        len = ft_ft_puthexa(va_arg(args, char *));
+        len = convert_hexa(va_arg(args, unsigned int), c);
     if (c == '%')
         len = ft_putchar('%');
     return(len);
@@ -63,11 +61,11 @@ int ft_printf(const char *format, ...)
             while (format[i] && format[i] == ' ')
                 i++;
             if (valid(format[i]))
-                nb_char += tpe(args, format[i]);
+                nb_char += type(args, format[i]);
             i++;
         }
         else
-            nb_char += ft_putchar(args, formatt[i]);
+            nb_char += ft_putchar(format[i++]);
     }
     va_end(args);
     return (nb_char);
