@@ -12,38 +12,38 @@
 
 #include "ft_printf.h"
 
-int ft_nblen(unsigned int nb)
+int	ft_nblen(unsigned int nb)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    if (nb == 0)
-        return (1);
-    while (nb)
-    {
-        i++;
-        nb = nb / 16;
-    }
-    return (i);
+	i = 0;
+	if (nb == 0)
+		return (1);
+	while (nb)
+	{
+		i++;
+		nb = nb / 16;
+	}
+	return (i);
 }
 
-void    ft_printhexa(unsigned int nb, char c)
+void	ft_printhexa(unsigned int nb, char c)
 {
-    char *base;
-    long int    n;
+	char		*base;
+	long int	n;
 
-    n = (long int)nb;
-    if (c == 'x')
-        base = "0123456789abcdef";
-    else
-        base = "0123456789ABCDEF";
-    if (n > 15)
-        ft_printhexa(n / 16, c);
-    ft_putchar(base[n % 16]);
+	n = (long int)nb;
+	if (c == 'x')
+		base = "0123456789abcdef";
+	else
+		base = "0123456789ABCDEF";
+	if (n > 15)
+		ft_printhexa(n / 16, c);
+	ft_putchar(base[n % 16]);
 }
 
-int convert_hexa(unsigned int nb, char c)
+int	convert_hexa(unsigned int nb, char c)
 {
-    ft_printhexa(nb, c);
-    return (ft_nblen(nb));
+	ft_printhexa(nb, c);
+	return (ft_nblen(nb));
 }
