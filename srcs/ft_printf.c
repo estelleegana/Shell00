@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../incl/ft_printf.h"
 #include <stdarg.h>
 
 int	valid(char c)
