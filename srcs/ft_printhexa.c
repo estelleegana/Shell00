@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../incl/ft_printf.h"
 
 int	ft_nblen(unsigned int nb)
 {
