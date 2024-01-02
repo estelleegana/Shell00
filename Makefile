@@ -1,11 +1,11 @@
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = ft_printf.c \
-	ft_printnbr.c \
-	ft_printstr.c \
-	ft_printuns.c \
-	ft_printptr.c \
-	ft_printhexa.c \
+SRC = srcs/ft_printf.c \
+	srcs/ft_printnbr.c \
+	srcs/ft_printstr.c \
+	srcs/ft_printuns.c \
+	srcs/ft_printptr.c \
+	srcs/ft_printhexa.c \
 
 NAME = libftprintf.a
 
