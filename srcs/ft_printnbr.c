@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include <unistd.h>
+#include "../incl/ft_printf.h"
 
 int	ft_nbrlen(int n)
 {
